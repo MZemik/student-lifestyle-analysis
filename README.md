@@ -2,13 +2,15 @@
 
 A data analysis and machine learning project exploring how students' daily habits — sleep, study time, social activity, and physical exercise — relate to their **stress levels** and **academic performance (GPA)**.
 
+> This project is an extended and significantly reworked version of a university homework assignment. The datasets were provided by a lecturer and are likely **synthetic**, meaning the relationships between variables may be more clean-cut than in real-world data.
+
 ---
 
 ## 📌 Key Findings
 
 - 📚 **Study hours** are the strongest predictor of stress (r = +0.74) — students who study more report significantly higher stress
 - 😴 **Sleep** is the most impactful protective factor against stress (r = -0.30)
-- 🤖 A **Random Forest classifier** predicts student stress level with **100% accuracy** using only lifestyle features
+- 🤖 A **Random Forest classifier** predicts student stress level with **100% accuracy** using only lifestyle features *(expected given the synthetic nature of the dataset — stress levels appear to be deterministically derived from study hours)*
 - 📊 GPA is approximately **normally distributed** with a mean of **3.12** across all students
 
 ---
@@ -120,4 +122,4 @@ jupyter notebook student_lifestyle_analysis.ipynb
 
 ## 👤 Author
 
-**Matej Zemánek** — [github.com/MZemik](https://github.com/MZemik)
+**Matěj Zemánek** — [github.com/MZemik](https://github.com/MZemik)
