@@ -10,7 +10,8 @@ A data analysis and machine learning project exploring how students' daily habit
 
 - 📚 **Study hours** are the strongest predictor of stress (r = +0.74) — students who study more report significantly higher stress
 - 😴 **Sleep** is the most impactful protective factor against stress (r = -0.30)
-- 🤖 A **Random Forest classifier** predicts student stress level with **100% accuracy** using only lifestyle features *(expected given the synthetic nature of the dataset — stress levels appear to be deterministically derived from study hours)*
+- 🤖 **Model comparison:** Random Forest reached **100.00% accuracy**, while Logistic Regression reached **85.00%** on the same test split
+- 🧪 Logistic Regression performs best on **High** stress (F1 = 0.89) and struggles most on **Moderate** stress (recall = 0.73)
 - 📊 GPA is approximately **normally distributed** with a mean of **3.12** across all students
 
 ---
@@ -21,7 +22,7 @@ This project combines two datasets:
 - **Student lifestyle dataset** — daily hours spent on various activities, GPA, and stress level
 - **US student demographic dataset** — real names, age, and city
 
-The analysis covers data cleaning, exploratory visualizations, correlation analysis, and a machine learning classifier to predict stress level (Low / Moderate / High).
+The analysis covers data cleaning, exploratory visualizations, correlation analysis, and a machine learning comparison to predict stress level (Low / Moderate / High).
 
 ---
 
@@ -61,10 +62,10 @@ student-lifestyle-analysis/
    - Focused heatmap: Sleep hours vs stress level
 
 5. **Machine Learning — Stress Level Classifier**
-   - Model: `RandomForestClassifier` (100 trees)
+   - Models: `RandomForestClassifier` (100 trees) and `LogisticRegression` (`max_iter=150`)
    - Features: Study, Sleep, Social, Extracurricular, Physical Activity hours + GPA
    - Train / Test split: 80% / 20%
-   - Outputs: Accuracy, Classification Report, Confusion Matrix, Feature Importances
+   - Outputs: Accuracy, Classification Reports, side-by-side confusion matrix comparison, Feature Importances
 
 ---
 
@@ -77,8 +78,22 @@ All generated plots are saved to `results/plots/`:
 | `histogram_gpa.jpg` | GPA distribution across all students |
 | `heatmap_combined.jpg` | Correlation matrix: all daily hours & stress level |
 | `heatmap_sleep.jpg` | Focused correlation: sleep hours & stress level |
-| `confusion_matrix.jpg` | Model prediction accuracy per stress class |
+| `confusion_matrix_comparison.jpg` | Side-by-side confusion matrices: Random Forest vs Logistic Regression |
 | `feature_importance.jpg` | Which lifestyle features most predict stress level |
+
+---
+
+## 🤖 Model Comparison Summary
+
+| Metric | Random Forest | Logistic Regression |
+|---|---:|---:|
+| Accuracy | **100.00%** | **85.00%** |
+| Macro F1 | **1.00** | **0.84** |
+| Low (Recall) | **1.00** | **0.91** |
+| Moderate (Recall) | **1.00** | **0.73** |
+| High (Recall) | **1.00** | **0.90** |
+
+**Interpretation:** Random Forest clearly outperforms Logistic Regression on this dataset, likely because class boundaries are non-linear and/or highly structured (consistent with likely synthetic educational data).
 
 ---
 
